@@ -1,6 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import "./App.css";
-import Button from "./Button";
+import { Button } from "./Button";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -12,14 +12,21 @@ function App() {
     setName(value);
   };
 
+  useEffect(() => {
+    console.log('Start');
+  }, []);
+  /* useEffect(função, [array de estados]) */
+
   return (
     <div>
       <h1>Trem</h1>
 
       <h2>{counter}</h2>
-      <button onClick={() => setCounter((prevCounter) => prevCounter + 1)}>
-        counter
-      </button>
+      <Button
+        onClick={() => setCounter((prevCounter) => prevCounter + 1)}
+        text="counter"
+        /* trem={10} */
+      />
 
       <div>
         <h2>{name}</h2>
